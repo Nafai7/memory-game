@@ -36,13 +36,32 @@ h1 {
 }
 
 #board .tile {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border: 1vw solid black;
+    border-radius: 25%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+#board .tile-transform {
+    transform: rotateY(180deg);
+}
+
+.tile .tile-front, .tile .tile-back {
+    position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     height: 100%;
-    border: 1vw solid black;
-    border-radius: 25%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.tile .tile-back {
+    transform: rotateY(180deg);
 }
 
 .tile img {
@@ -50,6 +69,10 @@ h1 {
     max-height: 100%;
     width: auto;
     height: auto;
+}
+
+.not-clickable {
+    pointer-events: none;
 }
 
 @media only screen and (min-width: 768px) {
