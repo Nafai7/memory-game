@@ -1,0 +1,27 @@
+html {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+h1 {
+    font-size: 5vw;
+    text-align: center;
+}
+
+#board {
+    width: 100%;
+}
+
+.tile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 16.66%;
+    padding: 1%;
+    border: 1vw solid black;
+    border-radius: 20%;
+    aspect-ratio: 1/1;
+}
+
+img {
+    width: 100%;
+}
