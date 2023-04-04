@@ -34,6 +34,21 @@ class Tile {
     }
 }
 
+var startTime, currentTime, timeIntervalID;
+
+function updateScore() {
+    currentTime = new Date();
+    let timePassed = new Date(currentTime - startTime);
+    timePassed.setHours(timePassed.getHours() - 1);
+    document.getElementById("score").innerHTML = timePassed.toTimeString().split(' ')[0];
+}
+
+function checkIfEnded() {
+    if (document.getElementsByClassName("tile").length <= 0) {
+        clearInterval(timeIntervalID);
+    }
+}
+
 function tileClicked(tile) {
     let allTilesClicked = document.getElementsByClassName("tile-transform");
     if (allTilesClicked.length < 2) {
@@ -49,6 +64,7 @@ function tileClicked(tile) {
                 if (allTilesClicked[0].lastChild.firstChild.id == allTilesClicked[1].lastChild.firstChild.id) {
                     allTilesClicked.forEach(element => {
                         element.remove();
+                        checkIfEnded();
                     });
                 } else {
                     allTilesClicked.forEach(element => {
@@ -72,7 +88,7 @@ function shuffle(array) {
     }
   
     return array;
-  }
+}
 
 function initilize(size) {
     let board = document.getElementById("board");
@@ -100,6 +116,10 @@ function initilize(size) {
         }
         board.lastChild.appendChild(tiles[i].element());
     }
+
+    startTime = new Date();
+    currentTime = new Date();
+    timeIntervalID = setInterval(function() {updateScore();}, 1000);
 }
 
 initilize(18);

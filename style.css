@@ -2,14 +2,29 @@ html {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
+main {
+    height: 100vh;
+}
+
 h1 {
-    font-size: 5vw;
+    font-size: 7vw;
     text-align: center;
+}
+
+#score-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#score-container > * {
+    margin: 0.5vw;
+    font-size: 4vw;
 }
 
 #board {
     max-width: 90%;
-    max-height: 100vh;
+    max-height: 90vh;
     width: auto;
     height: auto;
     margin: auto;
@@ -76,12 +91,8 @@ h1 {
 }
 
 @media only screen and (min-width: 768px) {
-    #board {max-width: 45%;}
-    #board .row {margin-top: 1.2vh;}
-    #board .tile {border: 0.4vw solid black;}
-}
-
-@media only screen and (min-width: 768px) {
+    h1 {font-size: 5vw;}
+    #score-container > * {font-size: 2vw;}
     #board {max-width: 45%;}
     #board .row {margin-top: 1.1vh;}
     #board .tile {border: 0.4vw solid black;}
