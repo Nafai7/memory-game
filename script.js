@@ -43,9 +43,32 @@ function updateScore() {
     document.getElementById("score").innerHTML = timePassed.toTimeString().split(' ')[0];
 }
 
+function updateHighscore() {
+    let highscore = document.cookie.split(";").find((row) => row.startsWith("highscore="))?.split("=")[1];
+
+    if (highscore) {
+        document.getElementById("highscore").innerHTML = highscore;
+    } else {
+        document.cookie = "highscore=00:00:00";
+    }
+}
+
 function checkIfEnded() {
     if (document.getElementsByClassName("tile").length <= 0) {
         clearInterval(timeIntervalID);
+
+        let board = document.getElementById("board");
+        board.innerHTML = '<div id="start-container"><button onclick="initialize(18)">Start</button></div>';
+    
+        let highscore = document.cookie.split(";").find((row) => row.startsWith("highscore="))?.split("=")[1]
+        let currentscore = document.getElementById("score").innerHTML;
+        if (currentscore < highscore) {
+            let expires = new Date();
+            expires.setMonth(expires.getMonth() + 1);
+            document.cookie = "highscore=" + currentscore + ";expires=" + expires;
+
+            updateHighscore();
+        }
     }
 }
 
@@ -72,7 +95,7 @@ function tileClicked(tile) {
                     });
                 }
                 board.classList.toggle("not-clickable");
-            }, 1000);
+            }, 800);
         }
     }
 }
@@ -90,7 +113,7 @@ function shuffle(array) {
     return array;
 }
 
-function initilize(size) {
+function initialize(size) {
     let board = document.getElementById("board");
     board.innerHTML = "";
     
@@ -122,4 +145,4 @@ function initilize(size) {
     timeIntervalID = setInterval(function() {updateScore();}, 1000);
 }
 
-initilize(18);
+updateHighscore();
