@@ -140,6 +140,8 @@ function initialize(size) {
         board.lastChild.appendChild(tiles[i].element());
     }
 
+    document.getElementById("score-container").scrollIntoView(true);
+
     startTime = new Date();
     currentTime = new Date();
     timeIntervalID = setInterval(function() {updateScore();}, 1000);
