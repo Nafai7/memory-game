@@ -19,17 +19,21 @@ footer p {
     color: rgb(255, 255, 255);
 }
 
-footer > div {
-    width: 40%;
-    text-align: center;
-    margin-top: 1vh;
-}
-
 footer a {
+    margin-top: 1vh;
     display: flex;
     justify-content: center;
     align-items: center;
     text-decoration: none;
+    border-radius: 35%;
+    transition: 0.35s
+}
+
+footer a:hover {
+    z-index: 2;
+    scale: 1.2;
+    background-color: black;
+    box-shadow: 0 0 0.6vw 1vw black;
 }
 
 footer a p {

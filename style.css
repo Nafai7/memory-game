@@ -9,9 +9,25 @@ body {
     margin: 0;
 }
 
+#title {
+    width: 90%;
+    margin: auto;
+}
+
 h1 {
     font-size: 7vw;
     text-align: center;
+    border: 1vw solid black;
+    border-radius: 2vw;
+    padding: 0.5vw;
+    margin-top: 4vw;
+    margin-bottom: 2vw;
+}
+
+@keyframes highscore-animation {
+    0% {scale: 1;}
+    50% {scale: 1.2;}
+    100% {scale: 1;}
 }
 
 #highscore-container {
@@ -23,6 +39,11 @@ h1 {
 #highscore-container > * {
     margin: 0.5vw;
     font-size: 5vw;
+}
+
+#highscore-container.animated {
+    animation-name: highscore-animation;
+    animation-duration: 0.8s;
 }
 
 #score-container {
@@ -72,8 +93,13 @@ h1 {
     height: 100%;
     border: 1vw solid black;
     border-radius: 25%;
-    transition: transform 0.5s;
+    transition: transform 0.5s, scale 0.4s, box-shadow 0.2s;
     transform-style: preserve-3d;
+}
+
+#board .tile:hover {
+    scale: 1.2;
+    box-shadow: 0 0 0.1vw 0.05vw black;
 }
 
 #board .tile-transform {
@@ -112,6 +138,19 @@ h1 {
 
 #start-container button {
     font-size: 5vw;
+    border: none;
+    border-radius: 2vw;
+    color: white;
+    background-color: rgb(133, 133, 133);
+    padding: 1vw 2vw;
+    cursor: pointer;
+    transition: 0.4s , box-shadow 0.2s;
+}
+
+#start-container button:hover {
+    scale: 1.2;
+    background-color: black;
+    box-shadow: 0 0 0.4vw 0.1vw black;
 }
 
 .not-clickable {
@@ -119,16 +158,20 @@ h1 {
 }
 
 @media only screen and (min-width: 768px) {
-    h1 {font-size: 5vw;}
+    #title {width: 44%;}
+    h1 {font-size: 5vw;
+        border: 0.4vw solid black;}
     #score-container > * {font-size: 2vw;}
     #highscore-container > * {font-size: 3vw;}
     #board {max-width: 44%;}
     #board .row {margin-top: 1vh;}
     #board .tile {border: 0.4vw solid black;}
-    #start-container button {font-size: 3vw;}
+    #start-container button {font-size: 3vw;
+                            border-radius: 1vw;}
 }
 
 @media only screen and (min-width: 2560px) {
+    #title {width: 35%;}
     #board {max-width: 35%;}
     #board .row {margin-top: 0.5vh;}
     #board .tile {border: 0.3vw solid black;}

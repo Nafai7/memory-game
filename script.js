@@ -53,6 +53,13 @@ function updateHighscore() {
     }
 }
 
+function animateHighscore() {
+    document.getElementById("highscore-container").classList.toggle("animated");
+    setTimeout(function () {
+        document.getElementById("highscore-container").classList.toggle("animated");
+    }, 800);
+}
+
 function checkIfEnded() {
     if (document.getElementsByClassName("tile").length <= 0) {
         clearInterval(timeIntervalID);
@@ -68,6 +75,8 @@ function checkIfEnded() {
             document.cookie = "highscore=" + currentscore + ";expires=" + expires;
 
             updateHighscore();
+            window.scrollTo(0,0);
+            animateHighscore();
         }
     }
 }
